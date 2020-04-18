@@ -32,7 +32,7 @@
                             </a>
                         </td>
                         <td>
-                            <form action="{{ route('admin.product.destroy', ['product' => $product ]) }}" method="POST">
+                            <form action="{{ route('admin.product.destroy', ['product' => $product ]) }}" method="POST" onsubmit="return confirm('Delete it?')">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
