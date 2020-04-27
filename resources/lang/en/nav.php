@@ -6,4 +6,5 @@ return [
     'logout' => 'Logout',
     // Backend
     'products' => 'Products',
+    'categories' => 'Categories',
 ];

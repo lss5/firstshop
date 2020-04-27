@@ -1,19 +1,17 @@
 <?php
 
 return [
-    'title' => 'Products',
+    'title' => 'Categories',
 
     // pages
-    'title_create_view' => 'Create product',
-    'title_edit_view' => 'Edit product',
-    'title_show_view' => 'Product',
+    'title_create_view' => 'Create category',
+    'title_edit_view' => 'Edit category',
+    'title_show_view' => 'Category',
 
     // fields
     'name' => 'Name',
     'description' => 'Description',
-    'price' => 'Price',
-    'image' => 'Image',
-    'categories' => 'Categories',
+    'count_products' => 'Count products',
 
     // buttons
     'create' => 'Create',

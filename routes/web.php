@@ -29,4 +29,13 @@ Route::middleware(['auth'])->prefix('admin')->namespace('Backend')->name('admin.
     Route::get('/products/{product}/edit', 'ProductController@edit')->name('product.edit');
     Route::put('/products/{product}', 'ProductController@update')->name('product.update');
     Route::delete('/products/{product}', 'ProductController@destroy')->name('product.destroy');
+
+    // Categories
+    Route::get('/categories', 'CategoryController@index')->name('category.index');
+    Route::get('/categories/create', 'CategoryController@create')->name('category.create');
+    Route::post('/categories/store', 'CategoryController@store')->name('category.store');
+    Route::get('/categories/{category}', 'CategoryController@show')->name('category.show');
+    Route::get('/categories/{category}/edit', 'CategoryController@edit')->name('category.edit');
+    Route::put('/categories/{category}', 'CategoryController@update')->name('category.update');
+    Route::delete('/categories/{category}', 'CategoryController@destroy')->name('category.destroy');
 });

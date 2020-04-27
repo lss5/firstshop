@@ -8,7 +8,8 @@
             <thead>
                 <tr>
                     <th scope="col" width="20%">@lang('product.name')</th>
-                    <th scope="col" width="60%">@lang('product.description')</th>
+                    <th scope="col" width="50%">@lang('product.description')</th>
+                    <th scope="col" width="10%">@lang('product.categories')</th>
                     <th scope="col" width="10%">@lang('product.price')</th>
                     <th scope="col" width="3%">@lang('product.view')</th>
                     <th scope="col" width="3%">@lang('product.edit')</th>
@@ -20,6 +21,7 @@
                     <tr>
                         <td scope="row">{{ $product->name }}</td>
                         <td>{{ $product->description }}</td>
+                        <td>{{ $product->categories()->pluck('name')->implode(', ') }}</td>
                         <td>{{ $product->price }}</td>
                         <td>
                             <a href="{{ route('admin.product.show', ['product' => $product]) }}">

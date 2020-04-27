@@ -22,6 +22,24 @@
     </div>
 </div>
 <div class="form-group row">
+    <label for="categories" class="col-sm-2 col-form-label">@lang('product.categories')</label>
+    <div class="col-sm-10">
+        <select multiple class="form-control" id="categories[]" name="categories[]">
+            @foreach ($categories as $category)
+                <option value="{{ $category->id }}"
+                    @if (old('categories')){{ in_array($category->id, old('categories')) ? 'selected' : '' }}
+                    @elseif ( $product->categories->pluck('id')->all() ){{ in_array($category->id, $product->categories->pluck('id')->all()) ? 'selected' : '' }} @endif
+                    >{{ $category->name }}</option>
+            @endforeach
+        </select>
+        @error('categories')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+</div>
+<div class="form-group row">
     <label for="price" class="col-sm-2 col-form-label">@lang('product.price')</label>
     <div class="col-sm-10">
         <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" name="price" placeholder="@lang('product.price')" value="{{ old('price') ?? $product->price }}">

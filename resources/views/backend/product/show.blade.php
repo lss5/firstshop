@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="container">
-    <h2 class="my-2">{{ $product->name }}</h2>
+    <h2 class="my-2">@lang('product.title_show_view'): {{ $product->name }}</h2>
+    <hr/>
     <div class="row my-2">
         <div class="col-sm-2">@lang('product.name')</div>
         <div class="col-sm-10">{{ $product->name }}</div>
@@ -19,5 +20,7 @@
         <div class="col-sm-2">@lang('product.image')</div>
         <div class="col-sm-10">{{ $product->image }}</div>
     </div>
+    <hr/>
+    <a class="btn btn-warning" href="{{ route('admin.product.index') }}">@lang('product.back')</a>
 </div>
 @endsection
