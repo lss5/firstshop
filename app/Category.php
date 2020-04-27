@@ -13,6 +13,11 @@ class Category extends Model
 
     public function products()
     {
-        return $this->belongsToMany('App\Category');
+        return $this->belongsToMany('App\Product');
+    }
+
+    public function products_limit()
+    {
+        return $this->belongsToMany('App\Product')->limit(4);
     }
 }

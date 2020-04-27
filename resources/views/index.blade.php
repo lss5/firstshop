@@ -2,11 +2,15 @@
 
 @section('content')
     <div class="container">
+        @foreach ($categories as $category)
+        <h2>{{ $category->name }}</h2>
         <div class="row">
-            <div class="col-3">1</div>
-            <div class="col-3">2</div>
-            <div class="col-3">3</div>
-            <div class="col-3">4</div>
+            @foreach ($category->products_limit as $product)
+            <div class="col-3">
+                <h3>{{ $product->name }}</h3>
+            </div>
+            @endforeach
         </div>
+        @endforeach
     </div>
 @endsection
