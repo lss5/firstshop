@@ -6,6 +6,7 @@ use App\Product;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
 {
@@ -26,14 +27,21 @@ class ProductController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            // 'price' => 'integer',
+            'price' => 'nullable|integer',
+            'image' => 'sometimes|file|image|max:5000',
         ]);
 
-        $product = Product::create($request->except('_token'));
+        $product = Product::create([
+            'name' => $request->input('name'),
+            'description' => $request->has('description') ? $request->input('description') : '',
+            'price' => $request->has('price') ? $request->input('price') : '',
+        ]);
 
-        if ($request->categories) {
+        if ($request->has('categories')) {
             $product->categories()->attach($request->categories);
         }
+
+        $this->storeImage($product);
 
         return redirect()->route('admin.product.index');
     }
@@ -52,7 +60,8 @@ class ProductController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'price' => 'integer',
+            'price' => 'nullable|integer',
+            'image' => 'sometimes|file|image|max:5000',
         ]);
 
         $product->categories()->detach();
@@ -60,7 +69,13 @@ class ProductController extends Controller
             $product->categories()->attach($request->categories);
         }
 
-        $product->update($request->except('_token'));
+        $product->update([
+            'name' => $request->input('name'),
+            'description' => $request->has('description') ? $request->input('description') : '',
+            'price' => $request->has('price') ? $request->input('price') : '',
+        ]);
+
+        $this->storeImage($product);
 
         return redirect()->route('admin.product.index');
     }
@@ -71,4 +86,20 @@ class ProductController extends Controller
 
         return redirect()->route('admin.product.index');
     }
+
+    public function storeImage(Product $product)
+    {
+        if (request()->has('image')) {
+            $image = request()->file('image')->store('products', 'public');
+            $product->update([
+                'image' => $image,
+            ]);
+
+            $image = Image::make(public_path('storage/'.$product->image))->resize(400, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });;
+            $image->save();
+        }
+    }
+
 }

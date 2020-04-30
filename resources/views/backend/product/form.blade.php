@@ -50,3 +50,14 @@
         @enderror
     </div>
 </div>
+<div class="form-group row">
+    <label for="image" class="col-sm-2 col-form-label">@lang('product.image')</label>
+    <div class="col-sm-10">
+        <input type="file" name="image" id="image" class="@error('image') is-invalid @enderror">
+        @error('image')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+</div>

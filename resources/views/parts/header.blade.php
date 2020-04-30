@@ -10,9 +10,11 @@
         <div class="collapse navbar-collapse" id="navbarHeader">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Products</a>
-                </li>
+                @foreach (App\Category::all() as $category)
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">{{ $category->name }}</a>
+                    </li>
+                @endforeach
             </ul>
 
             <!-- Right Side Of Navbar -->

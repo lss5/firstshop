@@ -4,7 +4,7 @@
 <div class="container">
     <h2>@lang('product.title_create_view')</h2>
     <hr/>
-    <form action="{{ route('admin.product.store') }}" method="POST" class="my-2">
+    <form enctype="multipart/form-data" action="{{ route('admin.product.store') }}" method="POST" class="my-2">
         @include('backend.product.form')
         <hr/>
         <button type="submit" class="btn btn-success">@lang('product.create')</button>

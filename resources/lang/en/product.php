@@ -14,6 +14,9 @@ return [
     'price' => 'Price',
     'image' => 'Image',
     'categories' => 'Categories',
+    'image' => 'Image',
+    'choose_image' => 'Choose image',
+    'no_image' => 'Image not be uploaded',
 
     // buttons
     'create' => 'Create',
