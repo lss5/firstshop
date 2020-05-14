@@ -15,6 +15,12 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    /**
+     *  Description app for display in footer (/part/footer.blade.php)
+     */
+
+    'description' => env('APP_DESCRIPTION', 'Laravel'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

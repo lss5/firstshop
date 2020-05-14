@@ -12,8 +12,8 @@
         @yield('content')
     </main>
 
-    <footer class="footer2">
-        {{-- @include('parts.footer'); --}}
+    <footer class="mt-5">
+        @include('parts.footer')
     </footer>
 </body>
 </html>
