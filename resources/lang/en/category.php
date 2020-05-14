@@ -21,4 +21,7 @@ return [
     'delete' => 'Delete',
     'cancel' => 'Cancel',
     'back' => 'Back',
+
+    // Frontend
+    'empty' => 'No products in the category',
 ];

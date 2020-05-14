@@ -15,8 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['register' => false]);
 
-Route::get('/', 'HomeController@index')->name('home');
-
 /* Backend */
 Route::middleware(['auth'])->prefix('admin')->namespace('Backend')->name('admin.')->group(function(){
     Route::get('/', 'DashboardController@index')->name('index');
@@ -39,3 +37,9 @@ Route::middleware(['auth'])->prefix('admin')->namespace('Backend')->name('admin.
     Route::put('/categories/{category}', 'CategoryController@update')->name('category.update');
     Route::delete('/categories/{category}', 'CategoryController@destroy')->name('category.destroy');
 });
+
+/* Frontend */
+
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/{category}', 'ShopController@category')->name('category');
+Route::get('/{category}/{product}', 'ShopController@product')->name('product');

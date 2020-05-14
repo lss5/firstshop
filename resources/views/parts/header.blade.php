@@ -12,7 +12,7 @@
             <ul class="navbar-nav mr-auto">
                 @foreach (App\Category::all() as $category)
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">{{ $category->name }}</a>
+                        <a class="nav-link text-white" href="{{ route('category', ['category' => $category]) }}">{{ $category->name }}</a>
                     </li>
                 @endforeach
             </ul>
