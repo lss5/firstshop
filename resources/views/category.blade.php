@@ -1,11 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container py-4">
     <h1>{{ $category->name }}</h1>
-    <div class="row">
-        @forelse ($category->products as $product)
-            <div class="col-xs-12 col-md-6 col-lg-3 p-3 p-md-2 p-lg-2">
+    {{-- @if ($category->description) --}}
+        <h6>{{ $category->description }}</h6>
+    {{-- @endif --}}
+    @if ($category->products->count() > 0)
+        <div class="row">
+        @foreach ($category->products as $product)
+            <div class="col-xs-12 col-md-6 col-lg-3 py-3 py-md-2 py-lg-2">
                 <div class="card">
                     <img src="{{ asset('storage/'.$product->image) }}" class="card-img-top" alt="{{ $product->name }}">
                     <div class="card-body">
@@ -16,10 +20,11 @@
                     </div>
                 </div>
             </div>
-        @empty
-            <h2>@lang('category.empty')</h2>
-        @endforelse
-    </div>
+        @endforeach
+        </div>
+    @else
+        <h2>@lang('category.empty')</h2>
+    @endif
 </div>
 
 @endsection

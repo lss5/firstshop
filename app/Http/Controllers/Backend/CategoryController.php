@@ -24,6 +24,7 @@ class CategoryController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
+            'description' => 'required|max:255',
         ]);
 
         Category::create($request->except('_token'));
@@ -45,6 +46,7 @@ class CategoryController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
+            'description' => 'required|max:255',
         ]);
 
         $category->update($request->except('_token'));

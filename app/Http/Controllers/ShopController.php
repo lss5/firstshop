@@ -16,6 +16,6 @@ class ShopController extends Controller
 
     public function product(Category $category, Product $product)
     {
-        return view('product', ['product' => $product]);
+        return view('product', ['category' => $category, 'product' => $product]);
     }
 }
