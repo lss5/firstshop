@@ -21,7 +21,7 @@
                     <tr>
                         <td scope="row">{{ $category->name }}</td>
                         <td>{{ $category->description }}</td>
-                        <td>{{ $category->count }}</td>
+                        <td>{{ $category->products->count() }}</td>
                         <td>
                             <a href="{{ route('admin.category.show', ['category' => $category]) }}">
                                 <button type="button" class="btn btn-success"><i class="fa fa-eye"></i></button>
@@ -43,6 +43,6 @@
                 @endforeach
             </tbody>
         </table>
-        
+        {{ $categories->render() }}
     </div>
 @endsection

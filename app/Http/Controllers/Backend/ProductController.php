@@ -12,7 +12,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $products = Product::orderBy('created_at', 'desc')->paginate(10);
         return view('backend.product.index', ['products' => $products]);
     }
 
@@ -35,8 +35,10 @@ class ProductController extends Controller
             'name' => $request->input('name'),
             'description' => $request->has('description') ? $request->input('description') : '',
             'price' => $request->has('price') ? $request->input('price') : '',
+            'active' => $request->has('active') ? 1 : 0,
         ]);
 
+        // Add categories
         if ($request->has('categories')) {
             $product->categories()->attach($request->categories);
         }
@@ -64,15 +66,18 @@ class ProductController extends Controller
             'image' => 'sometimes|file|image|max:5000',
         ]);
 
+        // Update categories
         $product->categories()->detach();
         if ($request->categories) {
             $product->categories()->attach($request->categories);
         }
 
+        $active = $request->has('active') ? 1 : 0;
         $product->update([
             'name' => $request->input('name'),
             'description' => $request->has('description') ? $request->input('description') : '',
             'price' => $request->has('price') ? $request->input('price') : '',
+            'active' => $active,
         ]);
 
         $this->storeImage($product);
@@ -95,9 +100,9 @@ class ProductController extends Controller
                 'image' => $image,
             ]);
 
-            $image = Image::make(public_path('storage/'.$product->image))->resize(400, null, function ($constraint) {
-                $constraint->aspectRatio();
-            });;
+            $image = Image::make(public_path('storage/'.$product->image))->fit(500, 500, function ($constraint) {
+                $constraint->upsize();
+            });
             $image->save();
         }
     }

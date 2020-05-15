@@ -10,7 +10,9 @@
             <div class="col-xs-12 col-md-6 py-md-0 py-3">
                 <h5 class="text-muted">For sell send message</h5>
                 @if (config('contact.tg_channel_link'))
-                    <a href="{{ config('contact.tg_channel_link') }}" class="btn btn-primary btn-sm" target="_blank">Telegram</a>
+                    <a href="{{ config('contact.tg_channel_link') }}" class="btn btn-primary btn-sm" target="_blank">
+                        Telegram <i class="fa fa-telegram" aria-hidden="true"></i>
+                    </a>
                 @endif
             </div>
         </div>

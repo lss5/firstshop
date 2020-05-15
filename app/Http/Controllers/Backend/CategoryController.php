@@ -10,7 +10,8 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return view('backend.category.index', ['categories' => Category::all()]);
+        $categories = Category::paginate(15);
+        return view('backend.category.index', ['categories' => $categories]);
     }
 
     public function create()

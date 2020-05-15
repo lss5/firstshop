@@ -17,6 +17,9 @@ return [
     'image' => 'Image',
     'choose_image' => 'Choose image',
     'no_image' => 'Image not be uploaded',
+    'active' => 'Active',
+    'created_at' => 'Created',
+    'status' => 'Status',
 
     // buttons
     'create' => 'Create',
@@ -26,4 +29,5 @@ return [
     'delete' => 'Delete',
     'cancel' => 'Cancel',
     'back' => 'Back',
+    'more_info' => 'I need it',
 ];

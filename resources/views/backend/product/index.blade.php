@@ -3,36 +3,47 @@
 @section('content')
     <div class="container">
         <h1>@lang('product.title')</h1>
-        <a href="{{ route('admin.product.create') }}" class="btn btn-success">@lang('product.create')</a>
+        <a href="{{ route('admin.product.create') }}" class="btn btn-primary">@lang('product.create')</a>
         <table class="table table-striped mt-3">
             <thead>
                 <tr>
+                    <th scope="col" width="3%">@lang('product.edit')</th>
+                    <th scope="col" width="5%">@lang('product.status')</th>
                     <th scope="col" width="20%">@lang('product.name')</th>
                     <th scope="col" width="50%">@lang('product.description')</th>
                     <th scope="col" width="10%">@lang('product.categories')</th>
                     <th scope="col" width="10%">@lang('product.price')</th>
-                    <th scope="col" width="3%">@lang('product.view')</th>
-                    <th scope="col" width="3%">@lang('product.edit')</th>
+                    <th scope="col" width="3%">@lang('product.created_at')</th>
                     <th scope="col" width="3%">@lang('product.delete')</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($products as $product)
                     <tr>
-                        <td scope="row">{{ $product->name }}</td>
-                        <td>{{ $product->description }}</td>
+                        <td scope="row">
+                            <a href="{{ route('admin.product.edit', ['product' => $product]) }}">
+                                <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i></button>
+                            </a>
+                        </td>
+                        <td>
+                            @if ($product->active == 1)
+                                <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i>
+                            @else
+                                <i class="fa fa-ban text-danger" aria-hidden="true"></i>
+                            @endif
+                            @if ($product->image)
+                                <i class="fa fa-picture-o text-success" aria-hidden="true"></i>
+                            @else
+                                <i class="fa fa-camera text-danger" aria-hidden="true"></i>
+                            @endif
+                        </td>
+                        <td>
+                            <a href="{{ route('admin.product.show', ['product' => $product]) }}">{{ $product->name }}</a>
+                        </td>
+                        <td>{{ Str::limit($product->description, 100) }}</td>
                         <td>{{ $product->categories()->pluck('name')->implode(', ') }}</td>
                         <td>{{ $product->price }}</td>
-                        <td>
-                            <a href="{{ route('admin.product.show', ['product' => $product]) }}">
-                                <button type="button" class="btn btn-success"><i class="fa fa-eye"></i></button>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{ route('admin.product.edit', ['product' => $product]) }}">
-                                <button type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-                            </a>
-                        </td>
+                        <td>{{ $product->created_at->format('d/m/Y') }}</td>
                         <td>
                             <form action="{{ route('admin.product.destroy', ['product' => $product ]) }}" method="POST" onsubmit="return confirm('Delete it?')">
                                 @csrf
@@ -44,6 +55,6 @@
                 @endforeach
             </tbody>
         </table>
-        
+        {{ $products->render() }}
     </div>
 @endsection

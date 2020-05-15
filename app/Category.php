@@ -16,8 +16,18 @@ class Category extends Model
         return $this->belongsToMany('App\Product');
     }
 
+    public function products_active()
+    {
+        return $this->belongsToMany('App\Product')
+                    ->where([['active', true]])
+                    ->orderBy('created_at', 'desc');
+    }
+
     public function products_limit()
     {
-        return $this->belongsToMany('App\Product')->where('image', '!=', 'NULL')->take(4);
+        return $this->belongsToMany('App\Product')
+                    ->where([['image', '!=', 'NULL'],['active', true]])
+                    ->orderBy('created_at', 'desc')
+                    ->take(4);
     }
 }

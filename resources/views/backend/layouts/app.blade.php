@@ -67,6 +67,14 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <footer>
+            <div class="w-100 mt-3" style="background-color: #fff;">
+                <div class="container py-3">
+                    <span>Develop by <a href="http://lototcky.com" target="_blank">Sergey Lototcky</a></span>
+                </div>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

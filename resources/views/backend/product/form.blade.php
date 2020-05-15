@@ -61,3 +61,14 @@
         @enderror
     </div>
 </div>
+<div class="form-group row">
+    <label for="price" class="col-sm-2 col-form-label">@lang('product.active')</label>
+    <div class="col-sm-10">
+        <input type="checkbox" class="form-control" name="active" value="1" @if (old('active') ?? $product->active == 1) checked="checked" @endif >
+        @error('active')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+</div>
