@@ -11,7 +11,11 @@
         @foreach ($category->products_active as $product)
             <div class="col-xs-12 col-md-6 col-lg-3 py-3 py-md-2 py-lg-2">
                 <div class="card">
-                    <img src="{{ asset('storage/'.$product->image) }}" class="card-img-top" alt="{{ $product->name }}">
+                    @if ($product->image)
+                        <img src="{{ asset('storage/'.$product->image) }}" class="card-img-top" alt="{{ $product->name }}">
+                    @else
+                        <img src="{{ asset('storage/products/default.jpg') }}" class="card-img-top" alt="{{ $product->name }}">
+                    @endif
                     <div class="card-body">
                         <h5 class="card-title">{{ $product->name }}</h5>
                         {{-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> --}}

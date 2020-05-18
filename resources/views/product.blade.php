@@ -17,7 +17,11 @@
     <h1>{{ $product->name }}</h1>
     <div class="row">
         <div class="col-xs-12 col-md-6 py-3 py-md-0">
-            <img src="{{ asset('storage/'.$product->image) }}" alt="{{ $product->name }}" class="img-thumbnail">
+            @if ($product->image)
+                <img src="{{ asset('storage/'.$product->image) }}" class="mg-thumbnail" alt="{{ $product->name }}">
+            @else
+                <img src="{{ asset('storage/products/default.jpg') }}" class="mg-thumbnail" alt="{{ $product->name }}">
+            @endif
         </div>
         <div class="col-xs-12 col-md-6 py-3 py-md-0">
             {{ $product->description }}
