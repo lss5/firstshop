@@ -52,17 +52,26 @@
 </div>
 <div class="form-group row">
     <label for="image" class="col-sm-2 col-form-label">@lang('product.image')</label>
-    <div class="col-sm-10">
+    <div class="col-sm-4">
         <input type="file" name="image" id="image" class="@error('image') is-invalid @enderror">
         @error('image')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
         @enderror
+        @if ($product->image)
+            <small id="" class="form-text text-muted">
+                {{ $product->image }}
+            </small>
+        @endif
+    </div>
+    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+        <input type="checkbox" class="custom-control-input" id="delete_image" name="delete_image" value="1">
+        <label class="custom-control-label" for="delete_image">@lang('product.delete_image')</label>
     </div>
 </div>
 <div class="form-group row">
-    <label for="price" class="col-sm-2 col-form-label">@lang('product.active')</label>
+    <label for="active" class="col-sm-2 col-form-label">@lang('product.active')</label>
     <div class="col-sm-10">
         <input type="checkbox" class="form-control" name="active" value="1" @if (old('active') ?? $product->active == 1) checked="checked" @endif >
         @error('active')

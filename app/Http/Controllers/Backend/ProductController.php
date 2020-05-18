@@ -94,6 +94,11 @@ class ProductController extends Controller
 
     public function storeImage(Product $product)
     {
+        if (request()->has('delete_image')) {
+            $product->update([
+                'image' => null,
+            ]);
+        }
         if (request()->has('image')) {
             $image = request()->file('image')->store('products', 'public');
             $product->update([

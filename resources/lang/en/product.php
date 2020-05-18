@@ -30,4 +30,5 @@ return [
     'cancel' => 'Cancel',
     'back' => 'Back',
     'more_info' => 'I need it',
+    'delete_image' => 'Delete image'
 ];

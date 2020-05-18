@@ -7,14 +7,14 @@
         <table class="table table-striped mt-3">
             <thead>
                 <tr>
-                    <th scope="col" width="3%">@lang('product.edit')</th>
-                    <th scope="col" width="5%">@lang('product.status')</th>
+                    <th scope="col" width="3%" class="text-center">@lang('product.edit')</th>
+                    <th scope="col" width="5%" class="text-center">@lang('product.status')</th>
                     <th scope="col" width="20%">@lang('product.name')</th>
                     <th scope="col" width="50%">@lang('product.description')</th>
-                    <th scope="col" width="10%">@lang('product.categories')</th>
-                    <th scope="col" width="10%">@lang('product.price')</th>
-                    <th scope="col" width="3%">@lang('product.created_at')</th>
-                    <th scope="col" width="3%">@lang('product.delete')</th>
+                    <th scope="col" width="10%" class="text-center">@lang('product.categories')</th>
+                    <th scope="col" width="10%" class="text-center">@lang('product.price')</th>
+                    <th scope="col" width="3%" class="text-center">@lang('product.created_at')</th>
+                    <th scope="col" width="3%" class="text-center">@lang('product.delete')</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,7 +25,7 @@
                                 <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i></button>
                             </a>
                         </td>
-                        <td>
+                        <td class="text-center">
                             @if ($product->active == 1)
                                 <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i>
                             @else
