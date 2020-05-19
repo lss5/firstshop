@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', $product->name)
+
 @section('content')
 <div class="w-100" style="background-color: #e9ecef;">
     <div class="container">

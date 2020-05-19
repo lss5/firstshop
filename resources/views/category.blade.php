@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', $category->name)
+
 @section('content')
 <div class="container py-4">
     <h1>{{ $category->name }}</h1>
