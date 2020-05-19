@@ -1,5 +1,15 @@
 @extends('backend.layouts.app')
 
+@section('stylesheets')
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector:'textarea#description',
+            menubar: false
+        });
+    </script>
+@endsection
+
 @section('content')
 <div class="container">
     <h2 class="my-2">@lang('product.title_edit_view'): {{ $product->name }}</h2>

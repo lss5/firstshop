@@ -13,7 +13,7 @@
 <div class="form-group row">
     <label for="description" class="col-sm-2 col-form-label">@lang('product.description')</label>
     <div class="col-sm-10">
-        <textarea rows="3" class="form-control @error('description') is-invalid @enderror" id="description" name="description" placeholder="@lang('product.description')">{{ old('description') ?? $product->description }}</textarea>
+        <textarea rows="16" class="form-control @error('description') is-invalid @enderror" id="description" name="description" placeholder="@lang('product.description')">{{ old('description') ?? $product->description }}</textarea>
         @error('description')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

@@ -40,7 +40,7 @@
                         <td>
                             <a href="{{ route('admin.product.show', ['product' => $product]) }}">{{ $product->name }}</a>
                         </td>
-                        <td>{{ Str::limit($product->description, 100) }}</td>
+                        <td>{{ Str::limit(strip_tags($product->description), 50) }}</td>
                         <td>{{ $product->categories()->pluck('name')->implode(', ') }}</td>
                         <td>{{ $product->price }}</td>
                         <td>{{ $product->created_at->format('d/m/Y') }}</td>

@@ -28,7 +28,7 @@
         </div>
         <div class="col-md-6 col-xs-12 py-3 py-md-0 pt-md-2 bg-white">
             <h2>@lang('product.description')</h2>
-            {{ $product->description }}
+            {!! $product->description !!}
         </div>
     </div>
 </div>
