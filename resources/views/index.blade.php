@@ -9,6 +9,7 @@
                     @foreach ($category->products_limit as $product)
                     <div class="col-xs-12 col-md-6 col-lg-3 p-3 p-md-2 p-lg-2">
                         <div class="card">
+                            <p class="h4 m-3"><span class="badge badge-success">@lang('product.in_stock')</span></p>
                             <img src="{{ asset('storage/'.$product->image) }}" class="card-img-top" alt="{{ $product->name }}">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $product->name }}</h5>

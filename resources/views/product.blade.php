@@ -14,16 +14,18 @@
     </div>
 </div>
 <div class="container py-4">
-    <h1>{{ $product->name }}</h1>
+    <h1 class="mb-0">{{ $product->name }}</h1>
+    <p class="h4"><span class="badge badge-success">@lang('product.in_stock')</span></p>
     <div class="row">
-        <div class="col-xs-12 col-md-6 py-3 py-md-0">
+        <div class="col-md-6 col-xs-12 py-3 py-md-0">
             @if ($product->image)
                 <img src="{{ asset('storage/'.$product->image) }}" class="mg-thumbnail" alt="{{ $product->name }}">
             @else
                 <img src="{{ asset('storage/products/default.jpg') }}" class="mg-thumbnail" alt="{{ $product->name }}">
             @endif
         </div>
-        <div class="col-xs-12 col-md-6 py-3 py-md-0">
+        <div class="col-md-6 col-xs-12 py-3 py-md-0 pt-md-2 bg-white">
+            <h2>@lang('product.description')</h2>
             {{ $product->description }}
         </div>
     </div>

@@ -29,6 +29,9 @@ return [
     'delete' => 'Delete',
     'cancel' => 'Cancel',
     'back' => 'Back',
-    'more_info' => 'I need it',
-    'delete_image' => 'Delete image'
+    'more_info' => 'More info',
+    'delete_image' => 'Delete image',
+
+    // badge
+    'in_stock' => 'In stock',
 ];

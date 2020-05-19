@@ -73,7 +73,13 @@
 <div class="form-group row">
     <label for="active" class="col-sm-2 col-form-label">@lang('product.active')</label>
     <div class="col-sm-10">
-        <input type="checkbox" class="form-control" name="active" value="1" @if (old('active') ?? $product->active == 1) checked="checked" @endif >
+        <input type="checkbox" class="form-control"
+            @if ($product->exists)
+                @if (old('active') ?? $product->active == 1) checked="checked" @endif
+            @else
+                checked="checked"
+            @endif
+            name="active" value="1">
         @error('active')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

@@ -11,6 +11,7 @@
         @foreach ($category->products_active as $product)
             <div class="col-xs-12 col-md-6 col-lg-3 py-3 py-md-2 py-lg-2">
                 <div class="card">
+                    <p class="h4 m-3"><span class="badge badge-success">@lang('product.in_stock')</span></p>
                     @if ($product->image)
                         <img src="{{ asset('storage/'.$product->image) }}" class="card-img-top" alt="{{ $product->name }}">
                     @else
