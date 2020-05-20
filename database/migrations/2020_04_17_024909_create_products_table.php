@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->text('description')->nullable();
             $table->integer('price')->nullable();
             $table->string('image')->nullable();
+            $table->string('file')->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

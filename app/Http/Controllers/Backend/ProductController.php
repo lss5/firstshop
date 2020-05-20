@@ -7,9 +7,11 @@ use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+    // Actions
     public function index()
     {
         $products = Product::orderBy('created_at', 'desc')->paginate(10);
@@ -44,6 +46,7 @@ class ProductController extends Controller
         }
 
         $this->storeImage($product);
+        $this->storeFile($product);
 
         return redirect()->route('admin.product.index');
     }
@@ -81,6 +84,7 @@ class ProductController extends Controller
         ]);
 
         $this->storeImage($product);
+        $this->storeFile($product);
 
         return redirect()->route('admin.product.index');
     }
@@ -92,14 +96,21 @@ class ProductController extends Controller
         return redirect()->route('admin.product.index');
     }
 
+    // Functions
     public function storeImage(Product $product)
     {
         if (request()->has('delete_image')) {
+            if (Storage::disk('public')->exists($product->image)) {
+                Storage::disk('public')->delete($product->image);
+            }
             $product->update([
                 'image' => null,
             ]);
         }
-        if (request()->has('image')) {
+        if (request()->hasFile('image')) {
+            if (Storage::disk('public')->exists($product->image)) {
+                Storage::disk('public')->delete($product->image);
+            }
             $image = request()->file('image')->store('products', 'public');
             $product->update([
                 'image' => $image,
@@ -109,6 +120,27 @@ class ProductController extends Controller
                 $constraint->upsize();
             });
             $image->save();
+        }
+    }
+
+    public function storeFile(Product $product)
+    {
+        if (request()->has('delete_file')) {
+            if (Storage::disk('public')->exists($product->file)) {
+                Storage::disk('public')->delete($product->file);
+            }
+            $product->update([
+                'file' => null,
+            ]);
+        }
+        if (request()->hasFile('file')) {
+            if (Storage::disk('public')->exists($product->file)) {
+                Storage::disk('public')->delete($product->file);
+            }
+            $file = request()->file('file')->store('products', 'public');
+            $product->update([
+                'file' => $file,
+            ]);
         }
     }
 

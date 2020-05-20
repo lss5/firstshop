@@ -60,7 +60,7 @@
             </span>
         @enderror
         @if ($product->image)
-            <small id="" class="form-text text-muted">
+            <small class="form-text text-muted">
                 {{ $product->image }}
             </small>
         @endif
@@ -68,6 +68,26 @@
     <div class="custom-control custom-checkbox my-1 mr-sm-2">
         <input type="checkbox" class="custom-control-input" id="delete_image" name="delete_image" value="1">
         <label class="custom-control-label" for="delete_image">@lang('product.delete_image')</label>
+    </div>
+</div>
+<div class="form-group row">
+    <label for="file" class="col-sm-2 col-form-label">@lang('product.file')</label>
+    <div class="col-sm-4">
+        <input type="file" name="file" id="file" class="@error('file') is-invalid @enderror">
+        @error('file')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+        @if ($product->file)
+            <small class="form-text text-muted">
+                {{ $product->file }}
+            </small>
+        @endif
+    </div>
+    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+        <input type="checkbox" class="custom-control-input" id="delete_file" name="delete_file" value="1">
+        <label class="custom-control-label" for="delete_file">@lang('product.delete_file')</label>
     </div>
 </div>
 <div class="form-group row">

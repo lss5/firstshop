@@ -27,6 +27,11 @@
             @endif
         </div>
         <div class="col-md-6 col-xs-12 py-3 py-md-0 pt-md-2 bg-white">
+            @if ($product->file)
+                <small class="form-text text-muted">{{ $product->file }}</small>
+                <a class="btn btn-warning my-1" href="{{ asset('storage/'.$product->file) }}" target="_blank">@lang('product.download')</a>
+                <hr/>
+            @endif
             <h2>@lang('product.description')</h2>
             {!! $product->description !!}
         </div>

@@ -27,9 +27,20 @@
         <div class="col-sm-2">@lang('product.image')</div>
         <div class="col-sm-10 bg-white">
             @if ($product->image)
-                <img src="{{ asset('storage/'.$product->image) }}" alt="..." class="img-thumbnail">
+                <img src="{{ asset('storage/'.$product->image) }}" class="img-thumbnail">
             @else
                 @lang('product.no_image')
+            @endif
+        </div>
+    </div>
+    <div class="row my-2">
+        <div class="col-sm-2">@lang('product.file')</div>
+        <div class="col-sm-10 bg-white py-2">
+            @if ($product->file)
+                <a class="btn btn-primary" href="{{ asset('storage/'.$product->file) }}" target="_blank">@lang('product.download')</a>
+                <small class="form-text text-muted">{{ $product->file }}</small>
+            @else
+                @lang('product.no_file')
             @endif
         </div>
     </div>

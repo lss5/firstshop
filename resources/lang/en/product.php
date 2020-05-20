@@ -15,8 +15,10 @@ return [
     'image' => 'Image',
     'categories' => 'Categories',
     'image' => 'Image',
+    'file' => 'File',
     'choose_image' => 'Choose image',
     'no_image' => 'Image not be uploaded',
+    'no_file' => 'File not be uploaded',
     'active' => 'Active',
     'created_at' => 'Created',
     'status' => 'Status',
@@ -31,6 +33,8 @@ return [
     'back' => 'Back',
     'more_info' => 'More info',
     'delete_image' => 'Delete image',
+    'delete_file' => 'Delete file',
+    'download' => 'Download',
 
     // badge
     'in_stock' => 'In stock',
