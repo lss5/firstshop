@@ -16,6 +16,10 @@
         <div class="col-sm-10 bg-white">{{ $product->name }}</div>
     </div>
     <div class="row my-2">
+        <div class="col-sm-2">@lang('product.short_info')</div>
+        <div class="col-sm-10 bg-white">{{ $product->short_info }}</div>
+    </div>
+    <div class="row my-2">
         <div class="col-sm-2">@lang('product.description')</div>
         <div class="col-sm-10 bg-white">{!! $product->description !!}</div>
     </div>

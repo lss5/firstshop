@@ -22,6 +22,7 @@ return [
     'active' => 'Active',
     'created_at' => 'Created',
     'status' => 'Status',
+    'short_info' => 'Short info',
 
     // buttons
     'create' => 'Create',

@@ -29,12 +29,14 @@ class ProductController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
+            'short_info' => 'max:4000',
             'price' => 'nullable|integer',
             'image' => 'sometimes|file|image|max:5000',
         ]);
 
         $product = Product::create([
             'name' => $request->input('name'),
+            'short_info' => $request->has('short_info') ? $request->input('short_info') : '',
             'description' => $request->has('description') ? $request->input('description') : '',
             'price' => $request->has('price') ? $request->input('price') : '',
             'active' => $request->has('active') ? 1 : 0,
@@ -65,6 +67,7 @@ class ProductController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
+            'short_info' => 'max:4000',
             'price' => 'nullable|integer',
             'image' => 'sometimes|file|image|max:5000',
         ]);
@@ -78,6 +81,7 @@ class ProductController extends Controller
         $active = $request->has('active') ? 1 : 0;
         $product->update([
             'name' => $request->input('name'),
+            'short_info' => $request->has('short_info') ? $request->input('short_info') : '',
             'description' => $request->has('description') ? $request->input('description') : '',
             'price' => $request->has('price') ? $request->input('price') : '',
             'active' => $active,

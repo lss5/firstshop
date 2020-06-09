@@ -22,6 +22,17 @@
     </div>
 </div>
 <div class="form-group row">
+    <label for="short_info" class="col-sm-2 col-form-label">@lang('product.short_info')</label>
+    <div class="col-sm-10">
+        <textarea rows="16" class="form-control @error('short_info') is-invalid @enderror" id="short_info" name="short_info" placeholder="@lang('product.short_info')">{{ old('short_info') ?? $product->short_info }}</textarea>
+        @error('short_info')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+</div>
+<div class="form-group row">
     <label for="categories" class="col-sm-2 col-form-label">@lang('product.categories')</label>
     <div class="col-sm-10">
         <select multiple class="form-control" id="categories[]" name="categories[]">

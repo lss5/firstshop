@@ -21,9 +21,9 @@
     <div class="row">
         <div class="col-md-6 col-xs-12 py-3 py-md-0">
             @if ($product->image)
-                <img src="{{ asset('storage/'.$product->image) }}" class="mg-thumbnail" alt="{{ $product->name }}">
+                <img src="{{ asset('storage/'.$product->image) }}" class="img-thumbnail" alt="{{ $product->name }}">
             @else
-                <img src="{{ asset('storage/products/default.jpg') }}" class="mg-thumbnail" alt="{{ $product->name }}">
+                <img src="{{ asset('storage/products/default.jpg') }}" class="img-thumbnail" alt="{{ $product->name }}">
             @endif
         </div>
         <div class="col-md-6 col-xs-12 py-3 py-md-0 pt-md-2 bg-white">
@@ -32,7 +32,7 @@
                 <a class="btn btn-warning my-1" href="{{ asset('storage/'.$product->file) }}" target="_blank">@lang('product.download')</a>
                 <hr/>
             @endif
-            <h2>@lang('product.description')</h2>
+            {{-- <h2>@lang('product.description')</h2> --}}
             {!! $product->description !!}
         </div>
     </div>
